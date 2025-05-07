@@ -15,7 +15,7 @@ pg_cursor = pg_conn.cursor()
 mongo_client = pymongo.MongoClient("mongodb+srv://ameereking:bJx3Tov81KBpaeJ2@cluster0.jeaqbgq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 mongo_db = mongo_client["OrininuStreamingDB"]
 
-# Check for new changes in PostgreSQL sync table
+
 pg_cursor.execute("SELECT * FROM sync_queue ORDER BY timestamp ASC")
 changes = pg_cursor.fetchall()
 print("Changes to Process for MongoDB:", changes)  # Debugging output
