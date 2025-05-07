@@ -6,4 +6,5 @@ db = client["OrininuStreamingDB"]
 
 # Testing connection by listing collections
 collections = db.list_collection_names()
-print("Connected to MongoDB! Available collections:", collections)
+
+# It worked.
