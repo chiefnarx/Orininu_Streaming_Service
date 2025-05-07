@@ -92,7 +92,7 @@ for _ in range(NUM_PLAYLIST_SONGS):
         'song_id': random.randint(1, NUM_SONGS),
     })
 
-# Convert to DataFrames
+# Converting to DataFrames
 df_users = pd.DataFrame(users)
 df_artists = pd.DataFrame(artists)
 df_albums = pd.DataFrame(albums)
@@ -101,7 +101,7 @@ df_interactions = pd.DataFrame(interactions)
 df_playlists = pd.DataFrame(playlists)
 df_playlist_songs = pd.DataFrame(playlist_songs)
 
-# Export to Excel
+# Exporting to Excel
 """
 with pd.ExcelWriter('music_data.xlsx') as writer:
     df_users.to_excel(writer, sheet_name='Users', index=False)
@@ -113,7 +113,7 @@ with pd.ExcelWriter('music_data.xlsx') as writer:
     df_playlist_songs.to_excel(writer, sheet_name='PlaylistSongs', index=False)
 """
 
-# Export to individual CSV files (for PostgreSQL import)
+# Exporting to individual CSV files (for PostgreSQL import)
 df_users.to_csv("users.csv", index=False)
 df_artists.to_csv("artists.csv", index=False)
 df_albums.to_csv("albums.csv", index=False)
