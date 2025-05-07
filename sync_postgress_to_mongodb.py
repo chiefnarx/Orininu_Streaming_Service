@@ -1,7 +1,7 @@
 import psycopg2
 import pymongo
 
-# Connect to PostgreSQL
+# Connecting to PostgreSQL
 pg_conn = psycopg2.connect(
     dbname='Orininu Streaming Service',
     user="postgres",
@@ -11,14 +11,14 @@ pg_conn = psycopg2.connect(
 )
 pg_cursor = pg_conn.cursor()
 
-# Connect to MongoDB Atlas
+# Connecting to MongoDB Atlas
 mongo_client = pymongo.MongoClient("mongodb+srv://ameereking:bJx3Tov81KBpaeJ2@cluster0.jeaqbgq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 mongo_db = mongo_client["OrininuStreamingDB"]
 
 # Check for new changes in PostgreSQL sync table
 pg_cursor.execute("SELECT * FROM sync_queue ORDER BY timestamp ASC")
 changes = pg_cursor.fetchall()
-print("🔍 Changes to Process for MongoDB:", changes)  # Debugging output
+print("Changes to Process for MongoDB:", changes)  # Debugging output
 
 # Correct primary keys for different tables
 primary_keys = {
@@ -43,7 +43,6 @@ for change in changes:
             column_names = [desc[0] for desc in pg_cursor.description]
             record_dict = dict(zip(column_names, record))
 
-            # Convert `duration` field to string if present
             if "duration" in record_dict:
                 record_dict["duration"] = str(record_dict["duration"])  # Convert time to string
 
@@ -55,11 +54,12 @@ for change in changes:
     elif operation == "DELETE":
         mongo_collection.delete_one({primary_key: record_id})
 
-# Clear sync queue after processing
+# Clearing sync queue after processing
 pg_cursor.execute("DELETE FROM sync_queue")
 pg_conn.commit()
 
-print("🔥 PostgreSQL → MongoDB Sync Complete!")
+print("PostgreSQL → MongoDB Sync Complete!")
 
+#It worked!!!
 pg_cursor.close()
 pg_conn.close()
