@@ -1,10 +1,10 @@
 from pymongo import MongoClient
 
-# Connect to MongoDB Atlas
+# Connecting to MongoDB Atlas
 mongo_client = MongoClient("mongodb+srv://ameereking:bJx3Tov81KBpaeJ2@cluster0.jeaqbgq.mongodb.net/OrininuStreamingDB?retryWrites=true&w=majority&appName=Cluster0")
 mongo_db = mongo_client["OrininuStreamingDB"]
 
-# Sample data for MongoDB collections
+# Test data for MongoDB collections
 data = {
     "artists": [
         {"name": "DJ Khaled", "genre": "Hip-Hop", "debut_year": 2010}
@@ -26,4 +26,4 @@ for collection, records in data.items():
     mongo_collection.insert_many(records)
     print(f"Inserted {len(records)} records into {collection}!")
 
-print("🔥 Fresh MongoDB setup complete! No Firebase involved!")
+# It worked.
