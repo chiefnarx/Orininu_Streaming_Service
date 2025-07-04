@@ -1,6 +1,6 @@
 🎶 **Orininu Streaming Service Database**
 
-This project focuses on creating, managing, and migrating the database for the Orininu Streaming Service. Starting with **PostgreSQL**, thet data model was designed and structured, generated synthetic data using **Python**, and later transitioned the system to **MongoDB Atlas** for better flexibility and scalability.
+This project focuses on creating, managing, and migrating the database for the Orininu Streaming Service. Starting with **PostgreSQL**, the data model was designed and structured, generated synthetic data using **Python**, and later transitioned the system to **MongoDB Atlas** for better flexibility and scalability.
 
 The process also involved automating data synchronization using **Task Scheduler** to ensure PostgreSQL data remained up-to-date in MongoDB.
 
@@ -11,8 +11,6 @@ The process also involved automating data synchronization using **Task Scheduler
     ✅ PostgreSQL database creation.
     
     ✅ Data generation using Python.
-    
-    ✅ Data formatting & cleaning.
     
     ✅ Full migration to MongoDB Atlas.
 
